@@ -8,11 +8,20 @@
     <meta name="author" content="">
 
     <link href="<?=base_url('static/bootstrap/css/bootstrap.css');?>" rel="stylesheet">
+    <link href="<?=base_url('static/bootstrap/addons/datepicker/css/datepicker.css');?>" rel="stylesheet">
     <link href="<?=base_url('static/app/admin.css');?>" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="<?=base_url('static/bootstrap/js/bootstrap.min.js');?>"></script>
+    <script src="<?=base_url('static/bootstrap/addons/datepicker/js/bootstrap-datepicker.js');?>"></script>
+    <script>
+    $(document).ready(function() {
+    	$('.dropdown-toggle').dropdown();
+    	$('.datepicker').datepicker({format: 'dd/mm/yyyy'});
+    });
+    </script>
   </head>
 
   <body>
-
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -28,9 +37,9 @@
             </ul>
             <ul class="nav pull-right">
             	<li class="dropdown">
-                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, FIRST LAST<b class="caret"></b></a>
+                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, <?=$this->session->userdata('use_firstname');?> <?=$this->session->userdata('use_lastname');?><b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                      <li><a href="#">Logout</a></li>
+                      <li><a href="<?=site_url('admin/login/logout');?>">Logout</a></li>
                     </ul>
                 </li>
             </ul>

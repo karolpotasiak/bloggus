@@ -14,7 +14,7 @@ class Login extends MY_Controller {
 		if($this->input->post('email') && $this->input->post('password'))
 		{
 
-			$user = $this->user_model->getFirst('users', array('use_email'=>$this->input->post('email'), 'use_pass'=>md5($this->input->post('password')), 'use_is_admin' => 1));
+			$user = $this->user_model->getFirst( array('use_email'=>$this->input->post('email'), 'use_pass'=>md5($this->input->post('password')), 'use_is_admin' => 1));
 			if($user)
 			{
 				if(count($user)==1)
@@ -38,6 +38,6 @@ class Login extends MY_Controller {
 	public function logout()
 	{
 		$this->session->sess_destroy();
-		redirect('login');
+		redirect('admin');
 	}
 }
