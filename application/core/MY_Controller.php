@@ -43,6 +43,20 @@ class Public_Controller extends MY_Controller {
 	function __construct()
     {
         parent::__construct();
+		$this->_get_tags();
     }
 	
+	private function _get_tags()
+	{
+		$this->load->model('tag_model');
+		$this->data->tags = $this->tag_model->get();
+	}
+	
+	public function render($view)
+	{
+		$this->load->view('common/header', $this->data);
+		$this->load->view($view, $this->data);
+		$this->load->view('common/sidebar', $this->data);
+		$this->load->view('common/footer', $this->data);
+	}
 }

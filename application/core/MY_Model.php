@@ -7,11 +7,6 @@ class MY_Model extends CI_Model {
         parent::__construct();
     }		
 	
-	/*
-	 * Get from table
-	 * $where: array();
-	 * $return: bool if true - returns array otherwise object
-	 */
 	function get($return=false)
 	{
 		$query = $this->db->get($this->table);
@@ -23,18 +18,15 @@ class MY_Model extends CI_Model {
 		}
 	}
 	
-	/*
-	 * Get from table
-	 * $where: array();
-	 * $limit: bool;
-	 * $offset: bool;
-	 * $return: bool if true - returns array otherwise object
-	 */
-	function get_where($where=false, $limit=false, $offset=false, $return=false)
+	function get_where($where=false, $order=false,$limit=false, $offset=false, $return=false)
 	{
-		//$this->db->where($table, $where);
-		//$query = $this->db->get($table);
-		$query = $this->db->get_where($this->table, $where, $limit, $offset);
+		$this->db->where($where);
+		if($order !==false){
+			$this->db->order_by($order); 
+		}
+		$query = $this->db->get($this->table);
+		
+		//$query = $this->db->get_where($this->table, $where, $limit, $offset);
 		
 		if ($query->num_rows() > 0)
 		{
@@ -49,10 +41,6 @@ class MY_Model extends CI_Model {
 		}
 	}
 	
-	/**
-	 * Get from table 
-	 * returns first matching element
-	 */
 	function getFirst($where=false)
 	{
 		$query = $this->db->get_where($this->table, $where);

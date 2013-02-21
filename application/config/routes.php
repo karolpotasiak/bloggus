@@ -38,7 +38,9 @@
 |
 */
 $route['admin'] = "admin/login";
-$route['default_controller'] = "welcome";
+$route['view/(:num)'] = "post/view/$1";
+$route['tag/(:any)'] = "post/tag/$1";
+$route['default_controller'] = "post/blogroll";
 $route['404_override'] = '';
 
 
