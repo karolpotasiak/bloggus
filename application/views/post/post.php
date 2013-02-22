@@ -37,7 +37,7 @@
 	  </div>
 
 	</div>
-	<? if(count($comments)>0){?>
+	<? if($comments){?>
 		<? foreach($comments as $comment){?>
 		<div>
 			<p>Name:<?=$comment->com_name;?></p>
